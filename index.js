@@ -1,7 +1,9 @@
 'use strict'
+require('dotenv').config();
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+
 const app = express()
 
 //cors
@@ -11,7 +13,7 @@ app.use(cors())
 //directorio global
 global.__basedir = __dirname;
 
-let url = 'mongodb+srv://admin:admin@contabledemo.gowqd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+let url =  process.env.URL;
 
 var producto_routes = require('./routes/productoRoute');
 
@@ -21,10 +23,11 @@ app.use(bodyParser.json())
 
 app.use('/api', producto_routes);
 
+const PORT = process.env.PORT || 3000;
 
 // CONEXION A BASE DE DATOS
 mongoose.connect(url, (err,res) =>{    
-    app.listen(5000, ()=>{
-        console.log("Esta corriendo en puerto 5000")
+    app.listen(PORT, ()=>{
+        console.log('Esta corriendo en puerto',PORT );
     })
 })
