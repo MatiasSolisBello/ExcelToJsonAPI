@@ -26,8 +26,21 @@ app.use('/api', producto_routes);
 const PORT = process.env.PORT || 3000;
 
 // CONEXION A BASE DE DATOS
-mongoose.connect(url, (err,res) =>{    
+/*mongoose.connect(url, (err,res) =>{    
     app.listen(PORT, ()=>{
         console.log('Esta corriendo en puerto',PORT );
     })
-})
+})*/
+
+mongoose.connect(
+    url, 
+    {
+        useNewUrlParser: true, 
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }, (err) => {
+    app.listen(PORT, ()=>{
+        console.log('Esta corriendo en puerto',PORT );
+    }) 
+});
