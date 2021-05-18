@@ -12,7 +12,7 @@ function guardar(req,res) {
 
     producto.save((err,productostore) => {
         if (err) res.status(500).send(`Error> ${err}`)
-        res.status(200).send({producto:productostore})
+        res.json(productostore);
     })
 }
 
@@ -21,7 +21,7 @@ function buscar(req,res){
         if(!producto) return res.status(404).send({
             message:'Error producto no existe'
         }) 
-        res.status(200).send({producto})
+        res.json(producto);
     })
 }
 
@@ -35,9 +35,7 @@ function editar(req,res){
         });
          
         if(productoupdated){
-            return res.status(200).send({
-                producto:productoupdated
-            });
+            res.json(productoupdated);
         }else{
             return res.status(404).send({
                 message: 'No existe el producto'
@@ -53,9 +51,7 @@ function borrar(req,res){
             message: 'Error en el servidor' 
         });
         if(productoRemoved){
-            return res.status(200).send({
-                producto: productoRemoved
-            });
+            res.json(productoRemoved);
         }else{
             return res.status(404).send({
                 message: 'No existe el producto'

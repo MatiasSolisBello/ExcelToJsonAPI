@@ -23,6 +23,10 @@ app.use(bodyParser.json())
 
 app.use('/api', producto_routes);
 
+app.get("/", (req, res) => {
+    res.json({ message: "Este es un demo de MEVN" });
+  });
+
 const PORT = process.env.PORT || 3000;
 
 // CONEXION A BASE DE DATOS

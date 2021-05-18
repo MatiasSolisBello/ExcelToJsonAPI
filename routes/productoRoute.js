@@ -10,10 +10,10 @@ var productoController = require('../controllers/productoController');
 var api= express.Router();
 
 //guardamos empresa
-api.post('/producto',productoController.guardar)
-api.get('/producto',productoController.buscar)
-api.put('/producto/:id',productoController.editar)
-api.delete('/producto/:id',productoController.borrar)
+api.post('/productos',productoController.guardar)
+api.get('/productos',productoController.buscar)
+api.put('/productos/:id',productoController.editar)
+api.delete('/productos/:id',productoController.borrar)
 
 /*-----------SUBIDA DE EXCEL -> JSON -> MONGO---------------*/
 api.post('/uploadfile', productoController.uploadFileProductos)
