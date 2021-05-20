@@ -12,6 +12,7 @@ var api= express.Router();
 //guardamos empresa
 api.post('/productos',productoController.guardar)
 api.get('/productos',productoController.buscar)
+api.get('/productos/:_id',productoController.buscarPorId)
 api.put('/productos/:id',productoController.editar)
 api.delete('/productos/:id',productoController.borrar)
 

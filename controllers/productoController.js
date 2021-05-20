@@ -25,6 +25,16 @@ function buscar(req,res){
     })
 }
 
+function buscarPorId(req,res){
+    let idreq = req.params._id
+    Producto.find({_id: idreq}, (err,producto) => {
+        if(!producto) return res.status(404).send({
+            message:'Error producto no existe'
+        }) 
+        res.json(producto);
+    })
+}
+
 function editar(req,res){
     let productoId = req.params.id
     let update = req.body
@@ -125,6 +135,7 @@ function importExcelData2MongoDB(filePath){
 module.exports = {
     guardar,
     buscar,
+    buscarPorId,
     editar,
     borrar,
     uploadFileProductos
